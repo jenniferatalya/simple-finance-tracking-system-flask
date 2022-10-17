@@ -39,3 +39,18 @@ class DBSystem:
                 return True
             except:
                 return False
+
+    def payment_sales_invoice(self, sales_invoices):
+        sales_invoices_ = {}
+        with self.apps.app_context():
+            try:
+                for i in range(len(sales_invoices)):
+                    sales_invoices_[f'si{i}'] = self.si_db.query.where(self.si_db.id_trans==sales_invoices[i]).all()[0]
+                for j in range(len(sales_invoices_)):
+                    sales_invoices_[f'si{i}'].state = "Paid"
+                    self.db.session.add(sales_invoices_[f'si{i}'])
+
+                self.db.session.commit()
+                return True
+            except:
+                return False
