@@ -1,5 +1,5 @@
 from finance_track import app, db
-from finance_track.database_table import User, Role, SalesInvoice
+from finance_track.database_table import User, Role, SalesInvoice, Customer
 from flask import render_template, request
 from finance_track.database.run_system import *
 
@@ -16,7 +16,7 @@ def login():
 
     if usercode and password:
 
-        system = DBSystem(db, User, Role, app, SalesInvoice)
+        system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
         response = system.log_in(usercode, password)
 
         if response == "sales admin":
@@ -43,7 +43,7 @@ def create_invoice():
 
     if inv_date and cust_id and inv_total and remark:
 
-        system = DBSystem(db, User, Role, app, SalesInvoice)
+        system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
         response = system.insert_sales_invoice(inv_date, cust_id, inv_total, remark)
 
         if response == True:
