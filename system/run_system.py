@@ -24,6 +24,11 @@ class DBSystem:
                     role_ = Role.query.where(Role.role_id == role_id_).all()
                     return role_[0].role_name
 
+                else:
+                    return "wrong"
+            else:
+                return "no user"
+
 
 if __name__ == "__main__":
     dbsistem = DBSystem(db)
