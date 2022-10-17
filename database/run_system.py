@@ -32,13 +32,13 @@ class DBSystem:
 
     def insert_sales_invoice(self, date_, user_id_, total_, remark_):
         with self.apps.app_context():
-            try:
-                si = self.si_db(date_, user_id_, total_, remark_, 'Unpaid', None)
-                self.db.session.add(si)
-                self.db.session.commit()
-                return True
-            except:
-                return False
+            # try:
+            si = self.si_db(date_, int(user_id_), int(total_), remark_, 'Unpaid', None)
+            self.db.session.add(si)
+            self.db.session.commit()
+            return True
+            # except:
+            #     return False
 
     def payment_sales_invoice(self, sales_invoices):
         sales_invoices_ = {}

@@ -4,7 +4,7 @@ from finance_track import db
 class SalesInvoice(db.Model):
     __tablename__ = 'Sales_Invoice'
     id_trans = db.Column('id_trans', db.Integer, primary_key=True)
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Date)
     cust_id = db.Column(db.Integer, db.ForeignKey("Customer.cust_id"))
     total = db.Column(db.Integer)
     remark = db.Column(db.Text)
