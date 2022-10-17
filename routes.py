@@ -12,24 +12,24 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    usercode = request.args.get['usercode']
-    password = request.args.get['password']
+    usercode = request.form['usercode']
+    password = request.form['password']
 
     if usercode and password:
 
         system = DBSystem(db, User, Role, app)
         response = system.log_in(usercode, password)
 
-        if response == "admin_sale":
+        if response == "sales admin":
             return render_template('admin_sale.html')
         elif response == "finance":
             return render_template('finance.html')
         elif response == "manager":
             return render_template('manager.html')
         elif response == "wrong":
-            return
+            return "Wrong Password"
         elif response == "no user":
-            return
+            return "No Username"
         else:
-            return 0
+            return response
     return render_template('index.html')

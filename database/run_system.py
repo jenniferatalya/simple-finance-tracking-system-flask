@@ -6,15 +6,15 @@ class DBSystem:
         self.apps = apps
 
     def create_db(self):
-        with self.app.app_context():
+        with self.apps.app_context():
             self.db.create_all()
 
     def delete_db(self):
-        with self.app.app_context():
+        with self.apps.app_context():
             self.db.drop_all()
 
     def log_in(self, username, password):
-        with self.app.app_context():
+        with self.apps.app_context():
             user_ = self.user_db.query.where(self.user_db.user_id == username).all()
             if len(user_) != 0:
                 user_id_ = user_[0]
