@@ -2,21 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <title>PT. Tinny Jar</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='style_login.css')}}">
+        <title>Tinny Jar Production</title>
     </head>
     <body>
         <div class="login">
             <div class="center">
                 <h1>Login</h1>
-                <form method="post">
+                <form action="/login" method="post">
                     <div class="text_field">
-                        <input type="text" required>
+                        <input type="text" name ="usercode" required>
                         <span></span>
                         <label>User Code</label>
                     </div>
                     <div class="text_field">
-                        <input type="password" required>
+                        <input type="password" name="password" required>
                         <span></span>
                         <label>Password</label>
                     </div>
