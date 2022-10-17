@@ -11,8 +11,9 @@ class SalesInvoice(db.Model):
     state = db.Column(db.String(10))  # Unpaid, Paid, Void
     paid_date = db.Column(db.DateTime)
 
-    def __init__(self, date, total, remark, state, paid_date):
+    def __init__(self, date, cust_id, total, remark, state, paid_date):
         self.date = date
+        self.cust_id = cust_id
         self.total = total
         self.remark = remark
         self.state = state

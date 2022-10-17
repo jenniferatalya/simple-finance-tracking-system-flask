@@ -1,8 +1,9 @@
 class DBSystem:
-    def __init__(self, data_base, user_db, role_db, apps):
+    def __init__(self, data_base, user_db, role_db, apps, si_db):
         self.db = data_base
         self.user_db = user_db
         self.role_db = role_db
+        self.si_db = si_db
         self.apps = apps
 
     def create_db(self):
@@ -28,3 +29,13 @@ class DBSystem:
                     return "wrong"
             else:
                 return "no user"
+
+    def insert_sales_invoice(self, date_, user_id_, total_, remark_):
+        with self.apps.app_context():
+            try:
+                si = self.si_db(date_, user_id_, total_, remark_, 'Unpaid', None)
+                self.db.session.add(si)
+                self.db.session.commit()
+                return True
+            except:
+                return False
