@@ -1,6 +1,37 @@
+<!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static',filename='style_admin.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Tiny Jar Production</title>
+    </head>
     <body>
-        <h1>admin sale</h1>
+        <div class="sidebar">
+            <nav>
+                <h1>Tiny Jar Production</h1><br>
+                <ul>
+                    <a href="#"><li>Dashboard</li></a>
+                    <a href="#"><li>Sales Invoice</li></a>
+                    <a href="index.html"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
+                </ul>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="content">
+                <h2>Invoice Creation</h2><br>
+                <form action="/add_invoice" method="post">
+                    <label for="inv_date">Date</label>
+                    <input type="date" name="inv_date"><br>
+                    <label for="cust_id">Customer ID</label>
+                    <input type="text" name="cust_id"><br>
+                    <label for="inv_total">Total</label>
+                    <input type="text" name="inv_total"><br>
+                    <label for="inv_remark">Remark</label>
+                    <input type="text" name="inv_remark"><br>
+                    <button>Create Invoice</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
