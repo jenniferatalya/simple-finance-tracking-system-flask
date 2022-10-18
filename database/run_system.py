@@ -107,3 +107,21 @@ class DBSystem:
                 total_fine += si_[i].total
 
             return total_fine
+
+    def list_si_unpaid(self):
+        with self.apps.app_context():
+            si_ = self.si_db.query.where(self.si_db.state == 'Unpaid').order_by('date').all()
+            invoices = []
+            for i in range(len(si_)):
+                invoices.append(
+                    SIDto(
+                        si_[i].id_trans,
+                        si_[i].date,
+                        si_[i].cust_id,
+                        si_[i].total,
+                        si_[i].remark,
+                        si_[i].state,
+                        si_[i].paid_date
+                    )
+                )
+            return invoices

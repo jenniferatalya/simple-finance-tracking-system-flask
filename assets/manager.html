@@ -26,22 +26,16 @@
                 <thead>
                     <td style="text-align: left">Sales Invoice ID</td>
                     <td>Date</td>
-                    <td>Customer</td>
                     <td>Total</td>
-                    <td>Remark</td>
-                    <td>Status</td>
-                    <td>Paid Date</td>
                 </thead>
                 <tbody>
+                    {% for each in unpaid_list %}
                     <tr>
-                        <td>haha</td>
-                        <td>haha</td>
-                        <td>haha</td>
-                        <td>haha</td>
-                        <td>haha</td>
-                        <td>haha</td>
-                        <td>haha</td>
+                        <td>{{each.no_trans}}</td>
+                        <td>{{each.date_in}}</td>
+                        <td>{{each.total}}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

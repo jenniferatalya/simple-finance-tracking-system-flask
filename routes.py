@@ -54,7 +54,8 @@ def finance_page():
 def manager_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     total_fine = system.get_total_fine()
-    return render_template('manager.html', data=total_fine)
+    si_unpaid_list = system.list_si_unpaid()
+    return render_template('manager.html', data=total_fine, unpaid_list=si_unpaid_list)
 
 @app.route('/customer_page')
 def mcustomer_page():
