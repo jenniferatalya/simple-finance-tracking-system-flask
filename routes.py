@@ -48,7 +48,7 @@ def manager_page():
     return render_template('manager.html')
 
 
-@app.route('/admin_sale', methods=['POST', 'GET'])
+@app.route('/admin_sale', methods=['POST'])
 def create_invoice():
     inv_date = request.form['inv_date']
     cust_id = request.form['cust_id']
@@ -61,7 +61,7 @@ def create_invoice():
         response = system.insert_sales_invoice(inv_date, cust_id, inv_total, remark)
 
         if response:
-            return "<script>alert('berhasil'); window.location.href = '/admin_sale_page'; </script>"
+            return "<script>alert('Sales Invoice is Successfully Added'); window.location.href = '/admin_sale_page'; </script>"
         else:
             return "gagal"
 
