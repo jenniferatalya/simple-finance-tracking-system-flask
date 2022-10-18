@@ -27,8 +27,6 @@ class CustomerDto:
         self.total_debt = total_debt
 
 
-
-
 class DBSystem:
     def __init__(self, data_base, user_db, role_db, apps, si_db, cust_db):
         self.db = data_base
@@ -171,3 +169,34 @@ class DBSystem:
                 return True
             except:
                 return False
+    
+    def create_customer(self, name, address, phone):
+        with self.apps.app_context():
+            try:
+                cust_ = self.cust_db(name, address, phone, 'Active')
+                self.db.session.add(cust_)
+                self.db.session.commit()
+                return True
+            except:
+                return False
+    
+    def list_customer(self):
+        with self.apps.app_context():
+            customers_ = self.cust_db.query.all()
+            list_of_customers = []
+            for i in range(len(customers_)):
+                curr_debt = self.si_db.query.where(self.si_db.cust_id == customers_[i].cust_id).all()
+                curr_total = 0
+                for j in range(len(curr_debt)):
+                    curr_total += curr_debt[j].total
+                list_of_customers.append(
+                    CustomerDto(
+                        customers_[i].cust_id,
+                        customers_[i].cust_name, 
+                        customers_[i].cust_addr,  
+                        customers_[i].cust_tlp,
+                        customers_[i].cust_state,
+                        curr_total
+                    )
+                )
+            return list_of_customers

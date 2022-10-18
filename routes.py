@@ -1,4 +1,3 @@
-from re import A
 from finance_track import app, db
 from finance_track.database_table import User, Role, SalesInvoice, Customer
 from flask import render_template, request
@@ -61,7 +60,8 @@ def manager_page():
 @app.route('/customer_page')
 def customer_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    return render_template('customer.html')
+    list_of_customers = system.list_customer()
+    return render_template('customer.html', customers=list_of_customers)
 
 @app.route('/user_page')
 def user_page():
@@ -103,4 +103,19 @@ def add_new_user():
 @app.route('/manager_sales_invoice')
 def manager_si_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    return render_template('manager_sales_invoice.html')
+    sales_invoice_list = system.list_all_si()
+    return render_template('manager_sales_invoice.html', si=sales_invoice_list)
+
+@app.route('/new_customer', methods=['POST'])
+def add_new_cust():
+    name = request.form['cust_name']
+    address = request.form['address']
+    phone = request.form['tlp']
+    
+    if name and address and phone:
+        system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+        response = system.create_customer(name, address, phone)
+        if response:
+            return "<script>alert('New Customer is Successfully Added'); window.location.href = '/customer_page'; </script>"
+        else:
+            return "<script>alert('Failed'); window.location.href = '/customer_page'; </script>"
