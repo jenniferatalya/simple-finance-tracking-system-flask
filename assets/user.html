@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static',filename='style_user.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Tiny Jar Production</title>
+    </head>
+    <body>
+        <div class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../static/logo_white.png" alt="logo">
+                </div>
+                <ul>
+                    <a href="/manager_page"><li>Dashboard</li></a>
+                    <a href="/customer_page"><li>Customer Data</li></a>
+                    <a href="/user_page"><li>User</li></a>
+                    <a href="/"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
+                </ul>
+            </nav>
+        </div>
+        <div class="container">
+            <h1>User Data</h1><br><button class="add">Add New User</button><br><br>
+            <table id="example" class="table table-hover table-striped">
+                <thead>
+                    <td>User Code</td>
+                    <td>Name</td>
+                    <td>Role Code</td>
+                    <td>Action</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>567890</td>
+                        <td>dummy</td>
+                        <td>123</td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
