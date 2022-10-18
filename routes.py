@@ -37,6 +37,11 @@ def admin_sales_page():
     customers_list = system.list_all_customer()
     return render_template('admin_sale.html', data=customers_list)
 
+@app.route('/sales_invoice')
+def invoice_page():
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    return render_template('sales_invoice.html')
+
 
 @app.route('/finance_page')
 def finance_page():
