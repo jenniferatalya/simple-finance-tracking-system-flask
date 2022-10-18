@@ -19,27 +19,30 @@
             </nav>
         </div>
         <div class="container">
-            <h1>Sales Invoice Record</h1><br>
+            <h1>Sales Invoice Record<br><br></h1><br>
             <table id="example" class="table table-hover table-striped">
                 <thead>
-                    <td>Sales Invoice ID</td>
+                    <td style="text-align: left">Sales Invoice ID</td>
                     <td>Date</td>
                     <td>Customer</td>
                     <td>Total</td>
                     <td>Remark</td>
-                    <td>State</td>
+                    <td>Status</td>
                     <td>Paid Date</td>
                 </thead>
                 <tbody>
+                    {% for each in data %}
                     <tr>
-                        <td>12344</td>
-                        <td>18/10/2022</td>
-                        <td>Timothy</td>
-                        <td>10000</td>
-                        <td>dummy</td>
-                        <td>Unpaid</td>
-                        <td>-</td>
+                        <td>{{each.no_trans}}</td>
+                        <td>{{(each.date_in|string)[:10]}}</td>
+                        <td>{{each.customer_id}}</td>
+                        <td>{{"Rp " + (each.total|string)}}</td>
+                        <td>{{each.remark}}</td>
+                        <td>{{each.status}}</td>
+                        <td>{{each.date_pay}}</td>
                     </tr>
+                    {% endfor %}
+
                     
                 </tbody>
             </table>

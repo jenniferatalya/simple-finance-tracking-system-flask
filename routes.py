@@ -37,10 +37,12 @@ def admin_sales_page():
     customers_list = system.list_all_customer()
     return render_template('admin_sale.html', data=customers_list)
 
+
 @app.route('/sales_invoice')
 def invoice_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    return render_template('sales_invoice.html')
+    sales_invoice_list = system.list_all_si()
+    return render_template('sales_invoice.html', data=sales_invoice_list)
 
 
 @app.route('/finance_page')
@@ -69,4 +71,3 @@ def create_invoice():
             return "<script>alert('Sales Invoice is Successfully Added'); window.location.href = '/admin_sale_page'; </script>"
         else:
             return "gagal"
-
