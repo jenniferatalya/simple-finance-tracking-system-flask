@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body{
     margin: 0;
     padding: 0;
 }
 
 .login{
-    font-family: montserrat;
-    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #2E4052, #8797AF);
     height: 100vh;
     overflow: hidden;
 }
