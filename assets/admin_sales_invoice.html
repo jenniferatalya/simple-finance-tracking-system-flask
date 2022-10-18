@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style_admin_invoice.css">
+    </head>
+    <body>
+        <div class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../static/logo_white.png" alt="logo">
+                </div>
+                <ul>
+                    <a href="admin_sale.html"><li>Dashboard</li></a>
+                    <a href="admin_sales_invoice.html"><li>Sales Invoice</li></a>
+                    <a href="index.html"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
+                </ul>
+            </nav>
+        </div>
+        <div class="container">
+            <h1>Sales Invoice Record</h1><br>
+            <table id="example" class="table table-hover table-striped">
+                <thead>
+                    <td>Sales Invoice ID</td>
+                    <td>Date</td>
+                    <td>Customer</td>
+                    <td>Total</td>
+                    <td>Remark</td>
+                    <td>State</td>
+                    <td>Paid Date</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12344</td>
+                        <td>18/10/2022</td>
+                        <td>Timothy</td>
+                        <td>10000</td>
+                        <td>dummy</td>
+                        <td>Unpaid</td>
+                        <td>-</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
