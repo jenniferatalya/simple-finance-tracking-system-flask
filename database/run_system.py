@@ -31,11 +31,19 @@ class DBSystem:
             else:
                 return "no user"
 
+    def list_all_customer(self):
+        with self.apps.app_context():
+            cust_ = self.cust_db.query.all()
+            customers_ = []
+            for i in range(len(cust_)):
+                customers_.append((cust_[i].cust_id, cust_[i].cust_name))
+            return customers_
+
     def insert_sales_invoice(self, date_, cust_id_, total_, remark_):
         with self.apps.app_context():
-            user_ = self.user_db.query.where(self.cust_db.cust_id == cust_id_).all()
-            if len(user_) != 0:
-                cust_id_s = user_[0]
+            cust_ = self.cust_db.query.where(self.cust_db.cust_id == cust_id_).all()
+            if len(cust_) != 0:
+                cust_id_s = cust_[0]
                 if cust_id_s.cust_state == 'Active':
                     try:
                         si = self.si_db(date_, int(cust_id_), int(total_), remark_, 'Unpaid', None)

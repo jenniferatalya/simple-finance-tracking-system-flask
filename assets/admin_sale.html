@@ -9,7 +9,6 @@
     <body>
         <div class="sidebar">
             <nav>
-                <!-- <h1>Tiny Jar Production</h1><br> -->
                 <div class="logo">
                     <img src="../static/logo_white.png" alt="logo">
                 </div>
@@ -25,14 +24,21 @@
             <h2>Invoice Creation</h2><br>
             <form action="/admin_sale" method="post">
                 <label for="inv_date">Date</label>
-                <input type="date" name="inv_date"><br>
-                <label for="cust_id">Customer ID</label>
-                <input type="text" name="cust_id"><br>
-                <label for="inv_total">Total</label>
-                <input type="text" name="inv_total"><br>
-                <label for="inv_remark">Remark</label>
-                <input type="text" name="inv_remark"><br>
-                <button>Create Invoice</button>
+                <input type="date" name="inv_date" id="inv_date" required><br>
+
+                <label for="cust_id"><br>Customer ID</label>
+                <select name="cust_id" id="cust_id" required>
+                    {% for each in data %}
+                    <option value="{{each[0]}}">{{each[0]}} - {{each[1]}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="inv_total"><br>Total</label>
+                <input type="text" name="inv_total" id="inv_total" required><br>
+
+                <label for="inv_remark"><br>Remark</label>
+                <input type="text" name="inv_remark" id="inv_remark" required><br>
+                <br><button>Create Invoice</button>
             </form>
       
         </div>
