@@ -52,8 +52,19 @@ def finance_page():
 
 @app.route('/manager_page')
 def manager_page():
-    return render_template('manager.html')
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    total_fine = system.get_total_fine()
+    return render_template('manager.html', data=total_fine)
 
+@app.route('/customer_page')
+def mcustomer_page():
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    return render_template('customer.html')
+
+@app.route('/user_page')
+def user_page():
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    return render_template('user.html')
 
 @app.route('/admin_sale', methods=['POST'])
 def create_invoice():

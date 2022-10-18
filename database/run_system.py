@@ -98,3 +98,12 @@ class DBSystem:
                     )
                 )
             return invoices
+    
+    def get_total_fine(self):
+        with self.apps.app_context():
+            si_ = self.si_db.query.where(self.si_db.state == 'Unpaid').all()
+            total_fine = 0
+            for i in range(len(si_)):
+                total_fine += si_[i].total
+
+            return total_fine
