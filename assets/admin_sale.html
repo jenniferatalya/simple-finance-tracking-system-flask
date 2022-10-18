@@ -9,7 +9,10 @@
     <body>
         <div class="sidebar">
             <nav>
-                <h1>Tiny Jar Production</h1><br>
+                <!-- <h1>Tiny Jar Production</h1><br> -->
+                <div class="logo">
+                    <img src="../static/logo_white.png" alt="logo">
+                </div>
                 <ul>
                     <a href="#"><li>Dashboard</li></a>
                     <a href="#"><li>Sales Invoice</li></a>
@@ -18,20 +21,20 @@
             </nav>
         </div>
         <div class="container">
-            <div class="content">
-                <h2>Invoice Creation</h2><br>
-                <form action="/admin_sale" method="post">
-                    <label for="inv_date">Date</label>
-                    <input type="date" name="inv_date"><br>
-                    <label for="cust_id">Customer ID</label>
-                    <input type="text" name="cust_id"><br>
-                    <label for="inv_total">Total</label>
-                    <input type="text" name="inv_total"><br>
-                    <label for="inv_remark">Remark</label>
-                    <input type="text" name="inv_remark"><br>
-                    <button>Create Invoice</button>
-                </form>
-            </div>
+          
+            <h2>Invoice Creation</h2><br>
+            <form action="/admin_sale" method="post">
+                <label for="inv_date">Date</label>
+                <input type="date" name="inv_date"><br>
+                <label for="cust_id">Customer ID</label>
+                <input type="text" name="cust_id"><br>
+                <label for="inv_total">Total</label>
+                <input type="text" name="inv_total"><br>
+                <label for="inv_remark">Remark</label>
+                <input type="text" name="inv_remark"><br>
+                <button>Create Invoice</button>
+            </form>
+      
         </div>
     </body>
 </html>

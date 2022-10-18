@@ -15,16 +15,17 @@ body{
     width: 30%;
     height: 100vh;
     background: #314a63;
-    padding-left: 5px;
+    /* padding-left: 5px; */
 }
 
 .sidebar nav{
     font-size: 1em;
-    padding: 3em 0 1em 1em;
+    /* padding: 1em 0 1em 1em; */
 }
 
 .sidebar nav ul{
     list-style: none;
+    padding-left: 2vw;
 }
 
 .sidebar nav ul a li{
@@ -57,9 +58,23 @@ body{
     border: #314a63 0.5em solid;
     box-shadow: 0.5em -0.5em 0 0 rgb(255 255 255);
 }
+
 .sidebar nav ul a{
 color: inherit;
 text-decoration: none;
+}
+
+.logo{
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+    width: 70%;
+    position: relative;
+    padding-right: 2vw;
 }
 
 .fa fa-sign-out{
@@ -73,9 +88,9 @@ text-decoration: none;
 .container{
     width: 80%;
     display: flex;
-    flex-direction: row;
-    padding: 3em;
-    background: #f1f1f1;
+    flex-direction: column;
+    padding: 5em;
+    background: white;
 }
 
 h2 {
@@ -84,6 +99,8 @@ h2 {
 }
 
 input, label, button{
+    width: 60%;
+    align-self: center;
     font-family: 'Poppins', sans-serif;
     color: #3b5065;
 }
@@ -96,6 +113,7 @@ form {
 }
 
 label {
+    text-align: left;
     font-size: 18px;
     font-weight: 600;
 }
@@ -105,11 +123,11 @@ fieldset input:first-of-type {
 }
  
 input {
+    font-size: medium;
     padding: 5px;
-    width: 400px;
     height: 40px;
     border: none;
-    background-color: #b2bed1;
+    background-color: #c3cee0;
     border-radius: 10px;
     /*flex*/
     display: flex;

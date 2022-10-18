@@ -5,6 +5,13 @@ body{
     padding: 0;
 }
 
+img{
+    width: 200px;
+    justify-content: center;
+    align-self: center;
+    display: flex;
+}
+
 .login{
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(120deg, #2E4052, #8797AF);
@@ -13,6 +20,7 @@ body{
 }
 
 .center{
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
