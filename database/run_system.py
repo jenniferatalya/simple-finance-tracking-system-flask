@@ -17,6 +17,18 @@ class UserDto:
         self.role_name = role_name  
 
 
+class CustomerDto:
+    def __init__(self, customer_code, customer_name, customer_addr, customer_tlp, customer_status, total_debt):
+        self.customer_code = customer_code
+        self.customer_name = customer_name
+        self.customer_addr = customer_addr
+        self.customer_tlp = customer_tlp
+        self.customer_status = customer_status
+        self.total_debt = total_debt
+
+
+
+
 class DBSystem:
     def __init__(self, data_base, user_db, role_db, apps, si_db, cust_db):
         self.db = data_base

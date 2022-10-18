@@ -99,3 +99,8 @@ def add_new_user():
             return "<script>alert('New User is Successfully Added'); window.location.href = '/user_page'; </script>"
         else:
             return "<script>alert('Failed'); window.location.href = '/user_page'; </script>"
+
+@app.route('/manager_sales_invoice')
+def manager_si_page():
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    return render_template('manager_sales_invoice.html')
