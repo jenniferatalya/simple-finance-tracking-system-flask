@@ -21,13 +21,12 @@
             </nav>
         </div>
         <div class="container">
-            <h1>User Data</h1><br><button class="add">Add New User</button><br><br>
+            <h1>User Data</h1><br><button class="add" onclick="openAddForm()">Add New User</button><br><br>
             <table id="example" class="table table-hover table-striped">
                 <thead>
                     <td>User Code</td>
                     <td>Name</td>
                     <td>Role Code</td>
-                    <td>Action</td>
                 </thead>
                 <tbody>
                     {% for user in list_of_users %}
@@ -35,11 +34,36 @@
                         <td>{{user.user_id}}</td>
                         <td>{{user.username}}</td>
                         <td>{{user.role_name}}</td>
-                        <td><button>Edit</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+        <div class="form-popup" id="addForm">
+            <form action="/new_user" class="form-container" method="post">
+                <h1>Add New User</h1>
+                <label for="user_name">Name</label>
+                <input type="text" name="user_name" required><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" required><br><br>
+                <label for="role">User Role</label>
+                <select name="role" required>
+                    <option value="1">Sales Admin</option>
+                    <option value="2">Finance</option>
+                    <option value="3">Manager</option>
+                </select><br><br>
+                <button type="submit" class="add-btn">Add User</button>
+                <button type="button" class="cancel-btn" onclick="closeAddForm()">Cancel</button>
+            </form>
+        </div>
+        <script>
+            function openAddForm() {
+                document.getElementById("addForm").style.display="block";
+            }
+
+            function closeAddForm() {
+                document.getElementById("addForm").style.display="none";
+            }
+        </script>
     </body>
 </html>

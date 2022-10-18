@@ -212,3 +212,57 @@ button:hover{
     border-color: #314a63;
     transition-duration: 0.4s;
 }
+
+.form-popup{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #3b5065;
+    border-radius: 7px;
+    z-index: 9;
+}
+
+.form-container {
+    border-radius: 7px;
+    max-width: 400px;
+    padding: 10px;
+    background-color: white;
+}
+
+input, label, select{
+    width: 60%;
+    align-self: center;
+    font-family: 'Poppins', sans-serif;
+    color: #3b5065;
+}
+
+.form-container input[type=text], .form-container input[type=password], select {
+    width: 95%;
+    border: none;
+    background: #f1f1f1;
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+.cancel-btn {
+    background-color: rgb(170, 38, 38);
+    color: white;
+    position: relative;
+    right: 0;
+}
+
+.cancel-btn:hover{
+    background-color: white;
+    color: rgb(170, 38, 38);
+    border-color: rgb(170, 38, 38);
+}

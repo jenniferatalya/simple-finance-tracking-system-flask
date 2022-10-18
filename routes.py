@@ -1,3 +1,4 @@
+from re import A
 from finance_track import app, db
 from finance_track.database_table import User, Role, SalesInvoice, Customer
 from flask import render_template, request
@@ -58,7 +59,7 @@ def manager_page():
     return render_template('manager.html', data=total_fine, unpaid_list=si_unpaid_list)
 
 @app.route('/customer_page')
-def mcustomer_page():
+def customer_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     return render_template('customer.html')
 
@@ -83,4 +84,18 @@ def create_invoice():
         if response:
             return "<script>alert('Sales Invoice is Successfully Added'); window.location.href = '/admin_sale_page'; </script>"
         else:
-            return "gagal"
+            return "<script>alert('Failed'); window.location.href = '/admin_sale_page'; </script>"
+
+@app.route('/new_user', methods=['POST'])
+def add_new_user():
+    name = request.form['user_name']
+    password = request.form['password']
+    role = request.form['role']
+    
+    if name and password and role:
+        system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+        response = system.create_user(name, password, role)
+        if response:
+            return "<script>alert('New User is Successfully Added'); window.location.href = '/user_page'; </script>"
+        else:
+            return "<script>alert('Failed'); window.location.href = '/user_page'; </script>"

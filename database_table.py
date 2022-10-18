@@ -53,6 +53,7 @@ class User(db.Model):
     user_pswd = db.Column(db.String(64))
     role_id = db.Column(db.Integer, db.ForeignKey("Role.role_id"))
 
-    def __init__(self, user_name, user_pswd):
+    def __init__(self, user_name, user_pswd, role_id):
         self.user_name = user_name
         self.user_pswd = user_pswd
+        self.role_id = role_id

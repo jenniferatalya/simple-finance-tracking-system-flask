@@ -149,3 +149,13 @@ class DBSystem:
                     )
                 )
             return list_of_users
+
+    def create_user(self, name, password, role):
+        with self.apps.app_context():
+            try:
+                user_ = self.user_db(name, password, role)
+                self.db.session.add(user_)
+                self.db.session.commit()
+                return True
+            except:
+                return False
