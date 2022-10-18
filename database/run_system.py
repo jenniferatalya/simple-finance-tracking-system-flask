@@ -1,3 +1,14 @@
+class SIDto:
+    def __init__(self, no_trans, date_in, customer_id, total, remark, status, date_pay):
+        self.no_trans = no_trans
+        self.date_in = date_in
+        self.customer_id = customer_id
+        self.total = total
+        self.remark = remark
+        self.status = status
+        self.date_pay = date_pay
+
+
 class DBSystem:
     def __init__(self, data_base, user_db, role_db, apps, si_db, cust_db):
         self.db = data_base
@@ -69,3 +80,21 @@ class DBSystem:
                 return True
             except:
                 return False
+
+    def list_all_si(self):
+        with self.apps.app_context():
+            si_ = self.si_db.query.all()
+            invoices = []
+            for i in range(len(si_)):
+                invoices.append(
+                    SIDto(
+                        si_[i].id_trans,
+                        si_[i].date,
+                        si_[i].cust_id,
+                        si_[i].total,
+                        si_[i].remark,
+                        si_[i].state,
+                        si_[i].paid_date
+                    )
+                )
+            return invoices
