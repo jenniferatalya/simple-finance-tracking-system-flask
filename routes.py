@@ -65,7 +65,8 @@ def mcustomer_page():
 @app.route('/user_page')
 def user_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    return render_template('user.html')
+    list_of_users = system.list_user()
+    return render_template('user.html', list_of_users=list_of_users)
 
 @app.route('/admin_sale', methods=['POST'])
 def create_invoice():

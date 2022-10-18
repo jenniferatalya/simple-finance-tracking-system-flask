@@ -30,12 +30,14 @@
                     <td>Action</td>
                 </thead>
                 <tbody>
+                    {% for user in list_of_users %}
                     <tr>
-                        <td>567890</td>
-                        <td>dummy</td>
-                        <td>123</td>
+                        <td>{{user.user_id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.role_name}}</td>
                         <td><button>Edit</button></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

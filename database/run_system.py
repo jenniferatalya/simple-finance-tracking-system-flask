@@ -9,6 +9,14 @@ class SIDto:
         self.date_pay = date_pay
 
 
+class UserDto:
+    def __init__(self, user_id, username, user_pswd, role_name):
+        self.user_id =  user_id
+        self.username = username
+        self.user_pswd = user_pswd
+        self.role_name = role_name  
+
+
 class DBSystem:
     def __init__(self, data_base, user_db, role_db, apps, si_db, cust_db):
         self.db = data_base
@@ -125,3 +133,19 @@ class DBSystem:
                     )
                 )
             return invoices
+
+    def list_user(self):
+        with self.apps.app_context():
+            users_ = self.user_db.query.all()
+            list_of_users = []
+            for i in range(len(users_)):
+                curr_role = self.role_db.query.where(self.role_db.role_id == users_[i].role_id).all()[0].role_name
+                list_of_users.append(
+                    UserDto(
+                        users_[i].user_id,
+                        users_[i].user_name,
+                        users_[i].user_pswd,
+                        curr_role
+                    )
+                )
+            return list_of_users
