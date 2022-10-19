@@ -61,6 +61,7 @@ def manager_page():
 def customer_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     list_of_customers = system.list_customer()
+    print(list_of_customers)
     return render_template('customer.html', customers=list_of_customers)
 
 @app.route('/user_page')

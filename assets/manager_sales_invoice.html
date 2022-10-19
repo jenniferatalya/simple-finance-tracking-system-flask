@@ -34,7 +34,7 @@
                     <td>Action</td>
                 </thead>
                 <tbody>
-                    {% for each in data %}
+                    {% for each in si %}
                     <tr>
                         <td>{{each.no_trans}}</td>
                         <td>{{(each.date_in|string)[:10]}}</td>
@@ -46,8 +46,6 @@
                         <td><button>VOID</button></td>
                     </tr>
                     {% endfor %}
-
-                    
                 </tbody>
             </table>
         </div>

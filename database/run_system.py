@@ -11,10 +11,10 @@ class SIDto:
 
 class UserDto:
     def __init__(self, user_id, username, user_pswd, role_name):
-        self.user_id =  user_id
+        self.user_id = user_id
         self.username = username
         self.user_pswd = user_pswd
-        self.role_name = role_name  
+        self.role_name = role_name
 
 
 class CustomerDto:
@@ -89,7 +89,8 @@ class DBSystem:
         with self.apps.app_context():
             try:
                 for i in range(len(sales_invoices)):
-                    sales_invoices_[f'si{i}'] = self.si_db.query.where(self.si_db.id_trans == sales_invoices[i]).all()[0]
+                    sales_invoices_[f'si{i}'] = self.si_db.query.where(self.si_db.id_trans == sales_invoices[i]).all()[
+                        0]
                 for j in range(len(sales_invoices_)):
                     sales_invoices_[f'si{i}'].state = "Paid"
                     self.db.session.add(sales_invoices_[f'si{i}'])
@@ -116,7 +117,7 @@ class DBSystem:
                     )
                 )
             return invoices
-    
+
     def get_total_fine(self):
         with self.apps.app_context():
             si_ = self.si_db.query.where(self.si_db.state == 'Unpaid').all()
@@ -169,7 +170,7 @@ class DBSystem:
                 return True
             except:
                 return False
-    
+
     def create_customer(self, name, address, phone):
         with self.apps.app_context():
             try:
@@ -179,7 +180,7 @@ class DBSystem:
                 return True
             except:
                 return False
-    
+
     def list_customer(self):
         with self.apps.app_context():
             customers_ = self.cust_db.query.all()
@@ -192,8 +193,8 @@ class DBSystem:
                 list_of_customers.append(
                     CustomerDto(
                         customers_[i].cust_id,
-                        customers_[i].cust_name, 
-                        customers_[i].cust_addr,  
+                        customers_[i].cust_name,
+                        customers_[i].cust_addr,
                         customers_[i].cust_tlp,
                         customers_[i].cust_state,
                         curr_total
