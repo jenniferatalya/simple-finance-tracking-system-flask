@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif;
+}
+
+body{
+    display: flex;
+}
+
+.sidebar{
+    width: 30%;
+    height: 100vh;
+    background: #314a63;
+    /* padding-left: 5px; */
+}
+
+.sidebar nav{
+    font-size: 1em;
+    /* padding: 1em 0 1em 1em; */
+}
+
+.sidebar nav ul{
+    list-style: none;
+    padding-left: 2vw;
+}
+
+.sidebar nav ul a li{
+    color: #fff;
+    position: relative;
+    width:calc(100% - 1em);
+    padding:1em 0 1em 1em;
+}
+
+.sidebar nav ul a li:hover {
+    color: #000;
+    background: rgb(255 255 255);
+    border-radius: 0.5em 0em 0em 0.5em;
+}
+.sidebar nav ul a li:hover::before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: -1em;
+    border-radius: 0em 0em 0.5em 0em;
+    border: #314a63 0.5em solid;
+    box-shadow: 0.5em 0.5em 0 0 rgb(255 255 255);
+}
+.sidebar nav ul a li:hover::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    bottom: -1em;
+    border-radius: 0em 0.5em 0.5em 0em;
+    border: #314a63 0.5em solid;
+    box-shadow: 0.5em -0.5em 0 0 rgb(255 255 255);
+}
+
+.sidebar nav ul a{
+color: inherit;
+text-decoration: none;
+}
+
+.logo{
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+    width: 70%;
+    position: relative;
+    padding-right: 2vw;
+}
+
+.fa fa-sign-out{
+    color: white;
+}
+
+.fa fa-sign-out:hover::after{
+    color: black;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 5em;
+    background: white;
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+}
+
+input, label, button, select{
+    width: 60%;
+    align-self: center;
+    font-family: 'Poppins', sans-serif;
+    color: #3b5065;
+}
+
+.form-container input[type=text], .form-container input[type=password], select {
+    border: none;
+    background: #f1f1f1;
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+button{
+    background-color: #314a63;
+    padding: 0.5rem 1.5rem;
+    color: white;
+    border-radius: 7px;
+    border-color: transparent;
+    font-size: larger;
+    width: 17vw;
+}
+
+button:hover{
+    background-color: white;
+    color: #314a63;
+    border-radius: 7px;
+    border-color: #314a63;
+    transition-duration: 0.4s;
+}
+
+.cancel-btn {
+    background-color: rgb(170, 38, 38);
+    color: white;
+    position: relative;
+    right: 0;
+}
+
+.cancel-btn:hover{
+    background-color: white;
+    color: rgb(170, 38, 38);
+    border-color: rgb(170, 38, 38);
+}

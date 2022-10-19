@@ -2,21 +2,32 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{url_for('static',filename='style_edit_customer.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title></title>
     </head>
     <body>
+        <div class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../static/logo_white.png" alt="logo">
+                </div><br><br><br><br><br>
+                <ul>
+                    <a href="/"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
+                </ul>
+            </nav>
+        </div>
         <div class="container">
             <form action="/edit_customer" class="form-container" method="post">
                 <h1>Edit Customer</h1>
-                <label for="cust_id">Customer ID</label>
-                <input type="text" name="cust_id" value="{{customer.customer_code}}" readonly>
-                <label for="cust_name">Name</label>
+                <label for="cust_id">Customer ID</label><br>
+                <input type="text" name="cust_id" value="{{customer.customer_code}}" readonly><br><br>
+                <label for="cust_name">Name</label><br>
                 <input type="text" name="cust_name" value="{{customer.customer_name}}" required><br><br>
-                <label for="address">Address</label>
+                <label for="address">Address</label><br>
                 <input type="text" name="address" value="{{customer.customer_addr}}" required><br><br>
-                <label for="tlp">Phone</label>
+                <label for="tlp">Phone</label><br>
                 <input type="text" name="tlp" value="{{customer.customer_tlp}}" required><br><br>
-                <label for="tlp">Status</label>
+                <label for="tlp">Status</label><br>
                 <select name="status" id="status">
                     {% if 'Active' in customer.customer_status %}
                     <option value="Active">Active</option>
@@ -25,9 +36,9 @@
                     <option value="Not Active">Not Active</option>
                     <option value="Active">Active</option>
                     {% endif %}
-                </select>
-                <button type="submit" class="edit-btn">Edit Customer Data</button>
-                <a href="customer.html"><button>Cancel</button></a>
+                </select><br><br>
+                <button type="submit" class="edit-btn">Edit Customer Data</button>&emsp;
+                <a href="customer.html"><button class="cancel-btn">Cancel</button></a>
             </form>
         </div>
     </body>
