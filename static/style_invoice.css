@@ -200,3 +200,20 @@ table td:nth-child(1) {
         border-bottom: 1px solid var(--insideBorderColor);
     }
 }
+
+button{
+    background-color: #314a63;
+    padding: 0.5rem 1.5rem;
+    color: white;
+    border-radius: 7px;
+    border-color: transparent;
+    font-size: larger;
+}
+
+button:hover{
+    background-color: white;
+    color: #314a63;
+    border-radius: 7px;
+    border-color: #314a63;
+    transition-duration: 0.4s;
+}
