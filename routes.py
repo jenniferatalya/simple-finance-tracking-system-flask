@@ -127,8 +127,22 @@ def void():
     system.void_transaction(request.args.get('id_trans'))
     return "<script>alert('void'); window.location.href = '/manager_sales_invoice'; </script>"
 
-@app.route('/edit_customer', methods=['GET'])
-def edit_cust():
+@app.route('/get_customer', methods=['GET'])
+def get_cust():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    
-    return "<script>alert('edit'); window.location.href = '/customer_page'; </script>"
+    customer = system.get_customer_info(request.args.get('cust_id'))
+    return render_template('edit_customer.html', customer=customer)
+
+@app.route('/edit_customer', methods=['POST', 'GET'])
+def edit_customer():
+    cust_id = request.form['cust_id']
+    name = request.form['cust_name']
+    address = request.form['address']
+    tlp = request.form['tlp']
+    status = request.form['status']
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    response = system.edit_customer_data(cust_id, name, address, tlp, status)
+    if response:
+        return render_template('customer.html')
+    else:
+        return "<script>alert('Fail to Edit'); window.location.href = '/customer_page'; </script>"

@@ -26,6 +26,14 @@ class CustomerDto:
         self.customer_status = customer_status
         self.total_debt = total_debt
 
+class CustomerInfoDto:
+    def __init__(self, customer_code, customer_name, customer_addr, customer_tlp, customer_status):
+        self.customer_code = customer_code
+        self.customer_name = customer_name
+        self.customer_addr = customer_addr
+        self.customer_tlp = customer_tlp
+        self.customer_status = customer_status
+
 
 class DBSystem:
     def __init__(self, data_base, user_db, role_db, apps, si_db, cust_db):
@@ -208,3 +216,14 @@ class DBSystem:
             si_.state = 'Void'
             self.db.session.add(si_)
             self.db.session.commit()
+
+    def get_customer_info(self, id_):
+        with self.apps.app_context():
+            customer_ = self.cust_db.query.where(self.cust_db.cust_id == id_).all()[0]
+            return CustomerInfoDto(
+                customer_.cust_id,
+                customer_.cust_name,
+                customer_.cust_addr,
+                customer_.cust_tlp,
+                customer_.cust_state
+            )

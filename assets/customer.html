@@ -42,8 +42,7 @@
                         <td>{{customer.customer_tlp}}</td>
                         <td>{{customer.customer_status}}</td>
                         <td>{{customer.total_debt}}</td>
-                        <td><button>Edit</button></td>
-                        <td><a href="/edit_customer?cust_id={{customer.customer_code}}"><button>Edit</button></a></td>
+                        <td><a href="/get_customer?cust_id={{customer.customer_code}}"><button>Edit</button></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
