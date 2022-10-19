@@ -126,3 +126,9 @@ def void():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     system.void_transaction(request.args.get('id_trans'))
     return "<script>alert('void'); window.location.href = '/manager_sales_invoice'; </script>"
+
+@app.route('/edit_customer', methods=['GET'])
+def edit_cust():
+    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+    
+    return "<script>alert('edit'); window.location.href = '/customer_page'; </script>"

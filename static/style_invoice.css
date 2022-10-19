@@ -203,7 +203,7 @@ table td:nth-child(1) {
 
 button{
     background-color: #314a63;
-    padding: 0.5rem 1.5rem;
+    padding: 0.5vw 1.5vw;
     color: white;
     border-radius: 7px;
     border-color: transparent;
