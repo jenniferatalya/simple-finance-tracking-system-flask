@@ -201,3 +201,10 @@ class DBSystem:
                     )
                 )
             return list_of_customers
+
+    def void_transaction(self, id_):
+        with self.apps.app_context():
+            si_ = self.si_db.query.where(self.si_db.id_trans == id_).all()[0]
+            si_.state = 'Void'
+            self.db.session.add(si_)
+            self.db.session.commit()
