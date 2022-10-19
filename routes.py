@@ -1,4 +1,3 @@
-from crypt import methods
 from finance_track import app, db
 from finance_track.database_table import User, Role, SalesInvoice, Customer
 from flask import render_template, request
@@ -122,7 +121,8 @@ def add_new_cust():
         else:
             return "<script>alert('Failed'); window.location.href = '/customer_page'; </script>"
 
-@app.route('/void')
+@app.route('/void', methods=['GET'])
 def void():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    return
+    system.void_transaction(request.args.get('id_trans'))
+    return "<script>alert('void'); window.location.href = '/manager_sales_invoice'; </script>"

@@ -43,7 +43,7 @@
                         <td>{{each.remark}}</td>
                         <td>{{each.status}}</td>
                         <td>{{each.date_pay}}</td>
-                        <td><button href="/void?id_trans={{each.no_trans}}">VOID</button></td>
+                        <td><a href="/void?id_trans={{each.no_trans}}"><button>VOID</button></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
