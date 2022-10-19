@@ -227,3 +227,17 @@ class DBSystem:
                 customer_.cust_tlp,
                 customer_.cust_state
             )
+
+    def edit_customer_data(self, cust_id, name, address, tlp, status):
+        with self.apps.app_context():
+            try:
+                customer_ = self.cust_db.query.where(self.cust_db.cust_id == cust_id).all()[0]
+                customer_.cust_name = name
+                customer_.cust_addr = address
+                customer_.cust_tlp = tlp
+                customer_.cust_state = status
+                self.db.session.add(customer_)
+                self.db.session.commit()
+                return True
+            except:
+                return False

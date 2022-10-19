@@ -143,6 +143,6 @@ def edit_customer():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     response = system.edit_customer_data(cust_id, name, address, tlp, status)
     if response:
-        return render_template('customer.html')
+        return "<script>window.location.href = '/customer_page'; </script>"
     else:
         return "<script>alert('Fail to Edit'); window.location.href = '/customer_page'; </script>"
