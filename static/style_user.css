@@ -273,3 +273,9 @@ input, label, select {
     color: rgb(170, 38, 38);
     border-color: rgb(170, 38, 38);
 }
+
+@media only screen and (max-width: 600px) {
+    button{
+        background-color: pink;
+    }
+}

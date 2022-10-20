@@ -53,7 +53,7 @@
             <td>{{"Rp " + (each.total|string)}}</td>
             <td>{{each.remark}}</td>
             <td>{{each.status}}</td>
-            <td>{{each.date_pay}}</td>
+            <td>{{(each.date_pay|string)[:10]}}</td>
             <td><a href="/void?id_trans={{each.no_trans}}">
                 <button class="void_manager">VOID</button>
             </a></td>

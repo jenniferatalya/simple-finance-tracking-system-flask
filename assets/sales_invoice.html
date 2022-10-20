@@ -45,7 +45,7 @@
             <td>{{"Rp " + (each.total|string)}}</td>
             <td>{{each.remark}}</td>
             <td>{{each.status}}</td>
-            <td>{{each.date_pay}}</td>
+            <td>{{(each.date_pay|string)[:10]}}</td>
         </tr>
         {% endfor %}
 

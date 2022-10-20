@@ -1,3 +1,4 @@
+from datetime import datetime
 class SIDto:
     def __init__(self, no_trans, date_in, customer_id, total, remark, status, date_pay):
         self.no_trans = no_trans
@@ -101,6 +102,7 @@ class DBSystem:
                     sales_invoices_[f'si{i}'] = self.si_db.query.where(self.si_db.id_trans == sales_invoices[i]).all()[0]
                 for j in range(len(sales_invoices_)):
                     sales_invoices_[f'si{j}'].state = "Paid"
+                    sales_invoices_[f'si{j}'].paid_date = datetime.now()
                     self.db.session.add(sales_invoices_[f'si{j}'])
                     self.db.session.commit()
                 return True
