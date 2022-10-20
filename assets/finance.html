@@ -7,6 +7,7 @@
     <title>Tiny Jar Production</title>
     <script>
         const si_s = [];
+    
         function add_invoice() {
             const si_ = document.getElementById('select_si');
             const a = document.createElement('li');
@@ -22,11 +23,11 @@
                 select.value = ''
                 document.querySelector('ul.container_si').append(a);
 
-                console.log(si_s.toString())
+                document.getElementById('pay').disabled = false
             }
         }
         function paysi(){
-            window.location.href = '/payment' + si_s.toString()
+            window.location.href = '/payment?si=' + si_s.toString()
         }
     </script>
 </head>
@@ -60,7 +61,7 @@
 
         </ul>
     </div>
-    <button onclick="paysi()">Pay</button>
+    <button id="pay" onclick="paysi()" disabled>Pay</button>
 </div>
 </body>
 </html>

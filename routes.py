@@ -68,7 +68,7 @@ def finance_page():
     if 'role' in session:
         if session['role'] == "finance":
             system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-            sales_invoice_list = system.list_all_si()
+            sales_invoice_list = system.list_si_unpaid()
             return render_template('finance.html', si_=sales_invoice_list)
         else:
             return "<script>window.location.href = '/'; </script>"
@@ -205,3 +205,20 @@ def edit_customer():
         return "<script>window.location.href = '/customer_page'; </script>"
     else:
         return "<script>alert('Fail to Edit'); window.location.href = '/customer_page'; </script>"
+
+@app.route('/payment')
+def payment():
+    if 'role' in session:
+        if session['role'] == "finance":
+            si_id = request.args['si']
+            si_id = si_id.split(',')
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            response = system.payment_sales_invoice(si_id)
+            if response:
+                return "<script>alert('Success Transaction'); window.location.href = '/finance_page'; </script>"
+            else:
+                return "<script>alert('Failed Transaction'); window.location.href = '/finance_page'; </script>"
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
