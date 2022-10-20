@@ -26,6 +26,7 @@ class CustomerDto:
         self.customer_status = customer_status
         self.total_debt = total_debt
 
+
 class CustomerInfoDto:
     def __init__(self, customer_code, customer_name, customer_addr, customer_tlp, customer_status):
         self.customer_code = customer_code

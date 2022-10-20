@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{url_for('static',filename='style_login.css')}}">
-        <title>Tinny Jar Production</title>
-    </head>
-    <body>
-        <div class="login">
-            <div class="center">
-                <center><img src="../static/logo_black.png" alt="logo"></center>
-                <h1>Login</h1>
-                <form action="/login" method="post">
-                    <div class="text_field">
-                        <input type="text" name ="usercode" required>
-                        <span></span>
-                        <label>User Code</label>
-                    </div>
-                    <div class="text_field">
-                        <input type="password" name="password" required>
-                        <span></span>
-                        <label>Password</label>
-                    </div>
-                    <input type="submit" value="Login">
-                </form>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='style_login.css')}}">
+    <title>Tinny Jar Production</title>
+</head>
+<body>
+<div class="login">
+    <div class="center">
+        <center><img src="../static/logo_black.png" alt="logo"></center>
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <div class="text_field">
+                <input type="text" name="usercode" required>
+                <span></span>
+                <label>User Code</label>
             </div>
-        </div>
-    </body>
+            <div class="text_field">
+                <input type="password" name="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
+</body>
 </html>

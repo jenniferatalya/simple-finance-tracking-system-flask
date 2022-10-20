@@ -201,7 +201,7 @@ table td:nth-child(1) {
     }
 }
 
-button{
+button {
     background-color: #314a63;
     padding: 0.5vw 1.5vw;
     color: white;
@@ -210,7 +210,7 @@ button{
     font-size: larger;
 }
 
-button:hover{
+button:hover {
     background-color: white;
     color: #314a63;
     border-radius: 7px;

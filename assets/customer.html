@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{url_for('static',filename='style_user.css')}}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Tiny Jar Production</title>
-    </head>
-    <body>
-        <div class="sidebar">
-            <nav>
-                <div class="logo">
-                    <img src="../static/logo_white.png" alt="logo">
-                </div>
-                <ul>
-                    <a href="/manager_page"><li>Dashboard</li></a>
-                    <a href="/manager_sales_invoice"><li>Sales Invoice</li></a>
-                    <a href="/customer_page"><li>Customer Data</li></a>
-                    <a href="/user_page"><li>User</li></a>
-                    <a href="/"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
-                </ul>
-            </nav>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='style_user.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tiny Jar Production</title>
+</head>
+<body>
+<div class="sidebar">
+    <nav>
+        <div class="logo">
+            <img src="../static/logo_white.png" alt="logo">
         </div>
-        <div class="container">
-            <h1>Customer Data</h1><br><button class="add" onclick="openAddForm()">Add New User</button><br><br>
-            <table id="example" class="table table-hover table-striped">
-                <thead>
-                    <td>Customer Code</td>
-                    <td>Name</td>
-                    <td>Address</td>
-                    <td>Phone</td>
-                    <td>Status</td>
-                    <td>Total Debt</td>
-                    <td>Action</td>
-                </thead>
-                <tbody>
-                    {% for customer in customers %}
-                    <tr>
-                        <td>{{customer.customer_code}}</td>
-                        <td>{{customer.customer_name}}</td>
-                        <td>{{customer.customer_addr}}</td>
-                        <td>{{customer.customer_tlp}}</td>
-                        <td>{{customer.customer_status}}</td>
-                        <td>{{customer.total_debt}}</td>
-                        <td><a href="/get_customer?cust_id={{customer.customer_code}}"><button>Edit</button></a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="form-popup" id="addForm">
-            <form action="/new_customer" class="form-container" method="post">
-                <h1>Add New Customer</h1>
-                <label for="cust_name">Name</label>
-                <input type="text" name="cust_name" required><br><br>
-                <label for="address">Address</label>
-                <input type="text" name="address" required><br><br>
-                <label for="tlp">Phone</label>
-                <input type="text" name="tlp" required><br><br>
-                <button type="submit" class="add-btn">Add Customer</button>
-                <button type="button" class="cancel-btn" onclick="closeAddForm()">Cancel</button>
-            </form>
-        </div>
-        <script>
-            function openAddForm() {
-                document.getElementById("addForm").style.display="block";
-            }
+        <ul>
+            <a href="/manager_page">
+                <li>Dashboard</li>
+            </a>
+            <a href="/manager_sales_invoice">
+                <li>Sales Invoice</li>
+            </a>
+            <a href="/customer_page">
+                <li>Customer Data</li>
+            </a>
+            <a href="/user_page">
+                <li>User</li>
+            </a>
+            <a href="/">
+                <li><i class="fa fa-sign-out"></i> &nbsp Logout</li>
+            </a>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <h1>Customer Data</h1><br>
+    <button class="add" onclick="openAddForm()">Add New User</button>
+    <br><br>
+    <table id="example" class="table table-hover table-striped">
+        <thead>
+        <td>Customer Code</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Phone</td>
+        <td>Status</td>
+        <td>Total Debt</td>
+        <td>Action</td>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{customer.customer_code}}</td>
+            <td>{{customer.customer_name}}</td>
+            <td>{{customer.customer_addr}}</td>
+            <td>{{customer.customer_tlp}}</td>
+            <td>{{customer.customer_status}}</td>
+            <td>{{customer.total_debt}}</td>
+            <td><a href="/get_customer?cust_id={{customer.customer_code}}">
+                <button>Edit</button>
+            </a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="form-popup" id="addForm">
+    <form action="/new_customer" class="form-container" method="post">
+        <h1>Add New Customer</h1>
+        <label for="cust_name">Name</label>
+        <input type="text" name="cust_name" required><br><br>
+        <label for="address">Address</label>
+        <input type="text" name="address" required><br><br>
+        <label for="tlp">Phone</label>
+        <input type="text" name="tlp" required><br><br>
+        <button type="submit" class="add-btn">Add Customer</button>
+        <button type="button" class="cancel-btn" onclick="closeAddForm()">Cancel</button>
+    </form>
+</div>
+<script>
+    function openAddForm() {
+        document.getElementById("addForm").style.display = "block";
+    }
 
-            function closeAddForm() {
-                document.getElementById("addForm").style.display="none";
-            }
-        </script>
-    </body>
+    function closeAddForm() {
+        document.getElementById("addForm").style.display = "none";
+    }
+</script>
+</body>
 </html>

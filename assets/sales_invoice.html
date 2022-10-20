@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{url_for('static',filename='style_invoice.css')}}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <div class="sidebar">
-            <nav>
-                <div class="logo">
-                    <img src="../static/logo_white.png" alt="logo">
-                </div>
-                <ul>
-                    <a href="/admin_sale_page"><li>Dashboard</li></a>
-                    <a href="/sales_invoice"><li>Sales Invoice</li></a>
-                    <a href="/"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
-                </ul>
-            </nav>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='style_invoice.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="sidebar">
+    <nav>
+        <div class="logo">
+            <img src="../static/logo_white.png" alt="logo">
         </div>
-        <div class="container">
-            <h1>Sales Invoice Record<br><br></h1><br>
-            <table id="example" class="table table-hover table-striped">
-                <thead>
-                    <td style="text-align: left">Sales Invoice ID</td>
-                    <td>Date</td>
-                    <td>Customer</td>
-                    <td>Total</td>
-                    <td>Remark</td>
-                    <td>Status</td>
-                    <td>Paid Date</td>
-                </thead>
-                <tbody>
-                    {% for each in data %}
-                    <tr>
-                        <td>{{each.no_trans}}</td>
-                        <td>{{(each.date_in|string)[:10]}}</td>
-                        <td>{{each.customer_id}}</td>
-                        <td>{{"Rp " + (each.total|string)}}</td>
-                        <td>{{each.remark}}</td>
-                        <td>{{each.status}}</td>
-                        <td>{{each.date_pay}}</td>
-                    </tr>
-                    {% endfor %}
+        <ul>
+            <a href="/admin_sale_page">
+                <li>Dashboard</li>
+            </a>
+            <a href="/sales_invoice">
+                <li>Sales Invoice</li>
+            </a>
+            <a href="/">
+                <li><i class="fa fa-sign-out"></i> &nbsp Logout</li>
+            </a>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <h1>Sales Invoice Record<br><br></h1><br>
+    <table id="example" class="table table-hover table-striped">
+        <thead>
+        <td style="text-align: left">Sales Invoice ID</td>
+        <td>Date</td>
+        <td>Customer</td>
+        <td>Total</td>
+        <td>Remark</td>
+        <td>Status</td>
+        <td>Paid Date</td>
+        </thead>
+        <tbody>
+        {% for each in data %}
+        <tr>
+            <td>{{each.no_trans}}</td>
+            <td>{{(each.date_in|string)[:10]}}</td>
+            <td>{{each.customer_id}}</td>
+            <td>{{"Rp " + (each.total|string)}}</td>
+            <td>{{each.remark}}</td>
+            <td>{{each.status}}</td>
+            <td>{{each.date_pay}}</td>
+        </tr>
+        {% endfor %}
 
-                    
-                </tbody>
-            </table>
-        </div>
-    </body>
+
+        </tbody>
+    </table>
+</div>
+</body>
 </html>

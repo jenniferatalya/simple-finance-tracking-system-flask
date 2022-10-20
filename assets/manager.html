@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{url_for('static',filename='style_manager.css')}}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Tiny Jar Production</title>
-    </head>
-    <body>
-        <div class="sidebar">
-            <nav>
-                <div class="logo">
-                    <img src="../static/logo_white.png" alt="logo">
-                </div>
-                <ul>
-                    <a href="/manager_page"><li>Dashboard</li></a>
-                    <a href="/manager_sales_invoice"><li>Sales Invoice</li></a>
-                    <a href="/customer_page"><li>Customer Data</li></a>
-                    <a href="/user_page"><li>User</li></a>
-                    <a href="/"><li><i class="fa fa-sign-out"></i> &nbsp Logout</li></a>
-                </ul>
-            </nav>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='style_manager.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tiny Jar Production</title>
+</head>
+<body>
+<div class="sidebar">
+    <nav>
+        <div class="logo">
+            <img src="../static/logo_white.png" alt="logo">
         </div>
-        <div class="container">
-            <h1>Company's Total Fine: Rp {{data}}</h1><br><br>
-            <table id="example" class="table table-hover table-striped">
-                <thead>
-                    <td style="text-align: left">Sales Invoice ID</td>
-                    <td>Date</td>
-                    <td>Total</td>
-                </thead>
-                <tbody>
-                    {% for each in unpaid_list %}
-                    <tr>
-                        <td>{{each.no_trans}}</td>
-                        <td>{{each.date_in}}</td>
-                        <td>{{each.total}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </body>
+        <ul>
+            <a href="/manager_page">
+                <li>Dashboard</li>
+            </a>
+            <a href="/manager_sales_invoice">
+                <li>Sales Invoice</li>
+            </a>
+            <a href="/customer_page">
+                <li>Customer Data</li>
+            </a>
+            <a href="/user_page">
+                <li>User</li>
+            </a>
+            <a href="/">
+                <li><i class="fa fa-sign-out"></i> &nbsp Logout</li>
+            </a>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <h1>Company's Total Fine: Rp {{data}}</h1><br><br>
+    <table id="example" class="table table-hover table-striped">
+        <thead>
+        <td style="text-align: left">Sales Invoice ID</td>
+        <td>Date</td>
+        <td>Total</td>
+        </thead>
+        <tbody>
+        {% for each in unpaid_list %}
+        <tr>
+            <td>{{each.no_trans}}</td>
+            <td>{{each.date_in}}</td>
+            <td>{{each.total}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
 </html>

@@ -57,6 +57,7 @@ def manager_page():
     si_unpaid_list = system.list_si_unpaid()
     return render_template('manager.html', data=total_fine, unpaid_list=si_unpaid_list)
 
+
 @app.route('/customer_page')
 def customer_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
@@ -64,11 +65,13 @@ def customer_page():
     print(list_of_customers)
     return render_template('customer.html', customers=list_of_customers)
 
+
 @app.route('/user_page')
 def user_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     list_of_users = system.list_user()
     return render_template('user.html', list_of_users=list_of_users)
+
 
 @app.route('/admin_sale', methods=['POST'])
 def create_invoice():
@@ -87,12 +90,13 @@ def create_invoice():
         else:
             return "<script>alert('Failed'); window.location.href = '/admin_sale_page'; </script>"
 
+
 @app.route('/new_user', methods=['POST'])
 def add_new_user():
     name = request.form['user_name']
     password = request.form['password']
     role = request.form['role']
-    
+
     if name and password and role:
         system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
         response = system.create_user(name, password, role)
@@ -101,18 +105,20 @@ def add_new_user():
         else:
             return "<script>alert('Failed'); window.location.href = '/user_page'; </script>"
 
+
 @app.route('/manager_sales_invoice')
 def manager_si_page():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     sales_invoice_list = system.list_all_si()
     return render_template('manager_sales_invoice.html', si=sales_invoice_list)
 
+
 @app.route('/new_customer', methods=['POST'])
 def add_new_cust():
     name = request.form['cust_name']
     address = request.form['address']
     phone = request.form['tlp']
-    
+
     if name and address and phone:
         system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
         response = system.create_customer(name, address, phone)
@@ -121,17 +127,20 @@ def add_new_cust():
         else:
             return "<script>alert('Failed'); window.location.href = '/customer_page'; </script>"
 
+
 @app.route('/void', methods=['GET'])
 def void():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     system.void_transaction(request.args.get('id_trans'))
     return "<script>alert('void'); window.location.href = '/manager_sales_invoice'; </script>"
 
+
 @app.route('/get_customer', methods=['GET'])
 def get_cust():
     system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
     customer = system.get_customer_info(request.args.get('cust_id'))
     return render_template('edit_customer.html', customer=customer)
+
 
 @app.route('/edit_customer', methods=['POST', 'GET'])
 def edit_customer():
