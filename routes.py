@@ -31,7 +31,7 @@ def login():
         elif response == "wrong":
             return "<script>window.location.href = '/'; alert('Wrong Password'); </script>"
         elif response == "no user":
-            return "No Username"
+            return "<script>window.location.href = '/'; alert('No User'); </script>"
         else:
             return response
     return render_template('index.html')
@@ -96,7 +96,6 @@ def customer_page():
         if session['role'] == "manager":
             system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
             list_of_customers = system.list_customer()
-            print(list_of_customers)
             return render_template('customer.html', customers=list_of_customers)
         else:
             return "<script>window.location.href = '/'; </script>"
