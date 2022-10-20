@@ -1,11 +1,13 @@
 from finance_track import app, db
 from finance_track.database_table import User, Role, SalesInvoice, Customer
-from flask import render_template, request
+from flask import render_template, request, session
 from finance_track.database.run_system import *
 
 
 @app.route('/')
 def index():
+    if 'role' in session:
+        session.pop('role', None)
     return render_template('index.html')
 
 
@@ -17,10 +19,13 @@ def login():
         system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
         response = system.log_in(usercode, password)
         if response == "sales admin":
+            session['role'] = "sales admin"
             return "<script>window.location.href = '/admin_sale_page'; </script>"
         elif response == "finance":
+            session['role'] = "finance"
             return "<script>window.location.href = '/finance_page'; </script>"
         elif response == "manager":
+            session['role'] = "manager"
             return "<script>window.location.href = '/manager_page'; </script>"
         elif response == "wrong":
             return "Wrong Password"
@@ -33,44 +38,80 @@ def login():
 
 @app.route('/admin_sale_page')
 def admin_sales_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    customers_list = system.list_all_customer()
-    return render_template('admin_sale.html', data=customers_list)
+    if 'role' in session:
+        if session['role'] == "admin sale":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            customers_list = system.list_all_customer()
+            return render_template('admin_sale.html', data=customers_list)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/sales_invoice')
 def invoice_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    sales_invoice_list = system.list_all_si()
-    return render_template('sales_invoice.html', data=sales_invoice_list)
+    if 'role' in session:
+        if session['role'] == "admin sale":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            sales_invoice_list = system.list_all_si()
+            return render_template('sales_invoice.html', data=sales_invoice_list)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/finance_page')
 def finance_page():
-    return render_template('finance.html')
+    if 'role' in session:
+        if session['role'] == "finance":
+            return render_template('finance.html')
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/manager_page')
 def manager_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    total_fine = system.get_total_fine()
-    si_unpaid_list = system.list_si_unpaid()
-    return render_template('manager.html', data=total_fine, unpaid_list=si_unpaid_list)
+    if 'role' in session:
+        if session['role'] == "manager":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            total_fine = system.get_total_fine()
+            si_unpaid_list = system.list_si_unpaid()
+            return render_template('manager.html', data=total_fine, unpaid_list=si_unpaid_list)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/customer_page')
 def customer_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    list_of_customers = system.list_customer()
-    print(list_of_customers)
-    return render_template('customer.html', customers=list_of_customers)
+    if 'role' in session:
+        if session['role'] == "manager":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            list_of_customers = system.list_customer()
+            print(list_of_customers)
+            return render_template('customer.html', customers=list_of_customers)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/user_page')
 def user_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    list_of_users = system.list_user()
-    return render_template('user.html', list_of_users=list_of_users)
+    if 'role' in session:
+        if session['role'] == "manager":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            list_of_users = system.list_user()
+            return render_template('user.html', list_of_users=list_of_users)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/admin_sale', methods=['POST'])
@@ -108,9 +149,15 @@ def add_new_user():
 
 @app.route('/manager_sales_invoice')
 def manager_si_page():
-    system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
-    sales_invoice_list = system.list_all_si()
-    return render_template('manager_sales_invoice.html', si=sales_invoice_list)
+    if 'role' in session:
+        if session['role'] == "manager":
+            system = DBSystem(db, User, Role, app, SalesInvoice, Customer)
+            sales_invoice_list = system.list_all_si()
+            return render_template('manager_sales_invoice.html', si=sales_invoice_list)
+        else:
+            return "<script>window.location.href = '/'; </script>"
+    else:
+        return "<script>window.location.href = '/'; </script>"
 
 
 @app.route('/new_customer', methods=['POST'])
