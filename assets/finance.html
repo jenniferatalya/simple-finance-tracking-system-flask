@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{url_for('static',filename='style_finance.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tiny Jar Production</title>
     <script>
@@ -48,20 +48,24 @@
     </nav>
 </div>
 <div class="container">
-    <button onclick="add_invoice()">Add</button>
-    <label for="select_si"> </label>
-    <select name="select_si" id="select_si">
-         <option disabled selected value> -- select an option -- </option>
-        {% for each in si_ %}
-        <option id="{{each.no_trans}}" value="{{each.no_trans}}">{{each.no_trans}}</option>
-        {% endfor %}
-    </select><br>
+    <h1>Invoice Payment</h1>
+    <div class="selection">
+        <label for="select_si"> </label>
+        <select class="option_select" name="select_si" id="select_si">
+            <option disabled selected value> -- select an option -- </option>
+            {% for each in si_ %}
+            <option id="{{each.no_trans}}" value="{{each.no_trans}}">{{each.no_trans}}</option>
+            {% endfor %}
+        </select>&emsp;&emsp;
+        <button class="add_invoice" onclick="add_invoice()">Add</button>
+    </div><br>
     <div>
+        <h3>Invoice Number(s):</h3>
         <ul class="container_si">
 
         </ul>
     </div>
-    <button id="pay" onclick="paysi()" disabled>Pay</button>
+    <button class="payment" id="pay" onclick="paysi()" disabled>Pay</button>
 </div>
 </body>
 </html>

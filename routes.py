@@ -29,7 +29,7 @@ def login():
             session['role'] = "manager"
             return "<script>window.location.href = '/manager_page'; </script>"
         elif response == "wrong":
-            return "Wrong Password"
+            return "<script>window.location.href = '/'; alert('Wrong Password'); </script>"
         elif response == "no user":
             return "No Username"
         else:

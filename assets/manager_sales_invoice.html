@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{url_for('static',filename='style_invoice.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='style_invoice.css')}}"> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -31,7 +32,7 @@
     </nav>
 </div>
 <div class="container">
-    <h1>Sales Invoice Record<br><br></h1><br>
+    <h1>Sales Invoice Record<br><br></h1>
     <table id="example" class="table table-hover table-striped">
         <thead>
         <td style="text-align: left">Sales Invoice ID</td>
@@ -54,7 +55,7 @@
             <td>{{each.status}}</td>
             <td>{{each.date_pay}}</td>
             <td><a href="/void?id_trans={{each.no_trans}}">
-                <button>VOID</button>
+                <button class="void_manager">VOID</button>
             </a></td>
         </tr>
         {% endfor %}
