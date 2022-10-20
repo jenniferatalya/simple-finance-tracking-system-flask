@@ -5,6 +5,30 @@
     <link rel="stylesheet" href="{{url_for('static',filename='style_finance.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tiny Jar Production</title>
+    <script>
+        const si_s = [];
+        function add_invoice() {
+            const si_ = document.getElementById('select_si');
+            const a = document.createElement('li');
+            let si_id = si_.value;
+            const current_op = document.getElementById(si_id);
+            const select = document.getElementById('select_si')
+
+            if (current_op != null) {
+                a.innerHTML = si_id;
+                si_s.push(si_id)
+
+                current_op.style.display = 'none'
+                select.value = ''
+                document.querySelector('ul.container_si').append(a);
+
+                console.log(si_s.toString())
+            }
+        }
+        function paysi(){
+            window.location.href = '/payment' + si_s.toString()
+        }
+    </script>
 </head>
 <body>
 <div class="sidebar">
@@ -23,7 +47,20 @@
     </nav>
 </div>
 <div class="container">
+    <button onclick="add_invoice()">Add</button>
+    <label for="select_si"> </label>
+    <select name="select_si" id="select_si">
+         <option disabled selected value> -- select an option -- </option>
+        {% for each in si_ %}
+        <option id="{{each.no_trans}}" value="{{each.no_trans}}">{{each.no_trans}}</option>
+        {% endfor %}
+    </select><br>
+    <div>
+        <ul class="container_si">
 
+        </ul>
+    </div>
+    <button onclick="paysi()">Pay</button>
 </div>
 </body>
 </html>
