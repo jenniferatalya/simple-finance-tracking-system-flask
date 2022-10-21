@@ -108,3 +108,35 @@ input[type="submit"]:hover {
     border-color: #2691d9;
     transition: .5s;
 }
+
+@media screen and (max-width: 1000px) {
+    .center h1 {
+        font-size: 50px;
+    }
+
+    .center {
+        width: 80vw;
+    }
+
+    .text_field input {
+        height: 6vh;
+        font-size: 35px;
+    }
+
+    .text_field span::before {
+        top: 6vh;
+    }
+
+    .text_field label {
+        font-size: 35px;
+    }
+
+    img {
+        width: 50vw;
+    }
+
+    input[type="submit"] {
+        height: 6vh;
+        font-size: 35px;
+    }
+}

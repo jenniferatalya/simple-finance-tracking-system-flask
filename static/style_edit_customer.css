@@ -150,3 +150,24 @@ button:hover {
     color: rgb(170, 38, 38);
     border-color: rgb(170, 38, 38);
 }
+
+@media screen and (max-width: 980px) {
+    .fixedBody {
+        position: fixed;
+    }
+
+    .sidebar {
+        height: 93vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .sidebar nav {
+        font-size: 27px;
+        /* padding: 1em 0 1em 1em; */
+    }
+
+    .logo img {
+        width: 100%;
+    }
+}

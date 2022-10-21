@@ -274,8 +274,45 @@ input, label, select {
     border-color: rgb(170, 38, 38);
 }
 
-@media only screen and (max-width: 600px) {
-    button{
-        background-color: pink;
+
+@media screen and (max-width: 980px) {
+    .fixedBody {
+        position: fixed;
     }
+
+    .sidebar {
+        height: 93vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .sidebar nav {
+        font-size: 27px;
+        /* padding: 1em 0 1em 1em; */
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .container_customer {
+        padding-left: 1vh;
+        padding-right: 1vh;
+    }
+
+    .container_form_add {
+        font-size: 27px;
+    }
+
+    .container_form_add input {
+        font-size: 30px;
+    }
+
+    .edit_button {
+        height: 3vh;
+        font-size: 15px;
+        padding: 0;
+        width: 90%;
+    }
+
 }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tiny Jar Production</title>
 </head>
-<body>
+<body class="fixedBody">
 <div class="sidebar">
     <nav>
         <div class="logo">
@@ -28,7 +28,7 @@
 <div class="container">
 
     <h2>Invoice Creation</h2><br>
-    <form action="/admin_sale" method="post">
+    <form action="/admin_sale" method="post" class="admin_sale_form">
         <label for="inv_date">Date</label>
         <input type="date" name="inv_date" id="inv_date" required><br>
 

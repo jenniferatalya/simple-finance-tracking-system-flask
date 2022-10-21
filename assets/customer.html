@@ -31,11 +31,11 @@
         </ul>
     </nav>
 </div>
-<div class="container">
+<div class="container container_customer">
     <h1>Customer Data</h1><br>
     <button class="add" onclick="openAddForm()">Add New User</button>
     <br><br>
-    <table id="example" class="table table-hover table-striped">
+    <table id="example" class="table table-hover table-striped table_manager">
         <thead>
         <td>Customer Code</td>
         <td>Name</td>
@@ -55,7 +55,7 @@
             <td>{{customer.customer_status}}</td>
             <td>{{customer.total_debt}}</td>
             <td><a href="/get_customer?cust_id={{customer.customer_code}}">
-                <button>Edit</button>
+                <button class="edit_button">Edit</button>
             </a></td>
         </tr>
         {% endfor %}
@@ -63,7 +63,7 @@
     </table>
 </div>
 <div class="form-popup" id="addForm">
-    <form action="/new_customer" class="form-container" method="post">
+    <form action="/new_customer" class="form-container container_form_add" method="post">
         <h1>Add New Customer</h1>
         <label for="cust_name">Name</label>
         <input type="text" name="cust_name" required><br><br>

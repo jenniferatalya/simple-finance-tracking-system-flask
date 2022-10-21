@@ -284,7 +284,7 @@ button:hover {
     box-sizing: border-box;
 }
 
-.void_manager{
+.void_manager {
     width: 6vw;
     height: 6vh;
     background-color: #314a63;
@@ -292,4 +292,79 @@ button:hover {
     color: white;
     border-radius: 7px;
     border-color: transparent;
+}
+
+
+@media screen and (max-width: 980px) {
+    .fixedBody {
+        position: fixed;
+    }
+
+    .sidebar {
+        height: 93vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .sidebar nav {
+        font-size: 27px;
+        /* padding: 1em 0 1em 1em; */
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    h3 {
+        font-size: 27px;
+    }
+
+    .admin_sale_form input, label, button, select {
+        width: 100%;
+    }
+
+    .admin_sale_form label {
+        font-size: 27px;
+    }
+
+    .admin_sale_form input, button {
+        height: 3vh;
+        font-size: 27px;
+    }
+
+    .admin_sale_form select {
+        height: 4vh;
+        font-size: 27px;
+    }
+
+    .admin_sale_form button {
+        height: 5vh;
+        margin-top: 45vh;
+    }
+
+    .selection button {
+        width: 170px;
+    }
+
+    .selection select {
+        width: 60%;
+        height: 3vh;
+        font-size: 27px;
+    }
+
+    .payment {
+        width: 340px;
+    }
+
+    .table_manager {
+        padding-left: 1vh;
+        padding-right: 1vh;
+    }
+
+    .void_manager {
+        height: 3vh;
+        font-size: 15px;
+        padding: 0;
+    }
+
 }
